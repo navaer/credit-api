@@ -10,6 +10,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.set('trust proxy', true); // 👈 Add this line
+
 
 // Middleware
 app.use(cors());               // Optional: allows cross-origin API testing

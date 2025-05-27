@@ -12,7 +12,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3000', // Replace with your Render URL after deployment
+        url: 'https://credit-api-rmvv.onrender.com', // Replace with your Render URL after deployment
       },
     ],
   },

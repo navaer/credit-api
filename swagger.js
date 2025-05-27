@@ -1,15 +1,15 @@
 // swagger.js
 import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
 
 const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Credit Account API',
+      title: 'Credit API',
       version: '1.0.0',
-      description: 'REST API to manage credit accounts',
+      description: 'A demo REST API to test CRUD operations for credit accounts.',
     },
+    // Do not include servers here; it will be added dynamically at runtime
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -18,12 +18,13 @@ const options = {
         },
       },
     },
-    security: [{ bearerAuth: [] }],
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
-  apis: ['./routes/*.js'], // Path to the API docs in your routes
+  apis: ['./routes/*.js'], // Adjust this path as needed
 };
 
 export const swaggerSpec = swaggerJsdoc(options);
-export const swaggerUiMiddleware = swaggerUi.serve;
-export const swaggerUiHandler = swaggerUi.setup(swaggerSpec);
-

@@ -1,6 +1,7 @@
 // index.js
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import accountsRouter from './routes/accounts.js';
 import { swaggerSpec } from './swagger.js';
 import swaggerUi from 'swagger-ui-express';
@@ -10,8 +11,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON
-app.use(express.json());
+// Middleware
+app.use(cors());               // Optional: allows cross-origin API testing
+app.use(express.json());       // Parses incoming JSON requests
 
 // Welcome page
 app.get('/', (req, res) => {
@@ -26,15 +28,15 @@ app.get('/', (req, res) => {
   `);
 });
 
-// Swagger documentation with dynamic server URL
-app.use('/docs', (req, res, next) => {
+// Swagger docs with dynamic server URL injection
+app.use('/docs', swaggerUi.serve, (req, res) => {
   swaggerSpec.servers = [
-    { url: `${req.protocol}://${req.get('host')}` }
+    { url: `${req.protocol}://${req.get('host')}` },
   ];
-  swaggerUi.setup(swaggerSpec)(req, res, next);
-}, swaggerUi.serve);
+  swaggerUi.setup(swaggerSpec)(req, res);
+});
 
-// Accounts API routes (protected by Bearer token inside the router)
+// Protected API routes
 app.use('/accounts', accountsRouter);
 
 // Start server

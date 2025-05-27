@@ -7,8 +7,8 @@ import {
   patchAccount,
   deleteAccount,
 } from '../models/accountModel.js';
+import { authenticateToken } from '../middleware/auth.js';
 
-const router = express.Router();
 
 /**
  * @swagger
@@ -137,7 +137,8 @@ const router = express.Router();
  *         description: Deleted account
  */
 
-
+const router = express.Router();
+router.use(authenticateToken);
 
 
 router.get('/', async (req, res) => res.json(await getAccounts()));

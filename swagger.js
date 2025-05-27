@@ -10,11 +10,15 @@ const options = {
       version: '1.0.0',
       description: 'REST API to manage credit accounts',
     },
-    servers: [
-      {
-        url: 'https://credit-api-rmvv.onrender.com', // Replace with your Render URL after deployment
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+        },
       },
-    ],
+    },
+    security: [{ bearerAuth: [] }],
   },
   apis: ['./routes/*.js'], // Path to the API docs in your routes
 };

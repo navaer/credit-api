@@ -43,7 +43,7 @@ app.use('/docs', swaggerUi.serve, (req, res) => {
 app.use('api/accounts', apiAccountsRouter);
 
 // Protected API routes
-app.use('accounts', accountsRouter);
+app.use('/accounts', accountsRouter);
 
 // Start server
 app.listen(PORT, () => {

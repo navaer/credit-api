@@ -40,7 +40,7 @@ app.use('/docs', swaggerUi.serve, (req, res) => {
 });
 
 // Protected API routes
-app.use('api/accounts', apiAccountsRouter);
+app.use('/api/accounts', apiAccountsRouter);
 
 // Protected API routes
 app.use('/accounts', accountsRouter);

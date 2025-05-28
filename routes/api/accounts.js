@@ -7,7 +7,7 @@ import {
   patchAccount,
   deleteAccount,
 } from '../../models/accountModel.js';
-import { authenticateToken } from '../middleware/auth.js';
+import { authenticateToken } from '../../middleware/auth.js';
 
 
 /**

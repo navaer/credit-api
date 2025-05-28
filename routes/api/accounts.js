@@ -6,7 +6,7 @@ import {
   updateAccount,
   patchAccount,
   deleteAccount,
-} from '../models/accountModel.js';
+} from '../../models/accountModel.js';
 import { authenticateToken } from '../middleware/auth.js';
 
 

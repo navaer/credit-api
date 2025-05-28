@@ -24,7 +24,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/*.js'], // Adjust this path as needed
+  apis: ['./routes/api/*.js'], // Adjust this path as needed
 };
 
 export const swaggerSpec = swaggerJsdoc(options);

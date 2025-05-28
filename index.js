@@ -2,6 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import apiAccountsRouter from './routes/api/accounts.js';
 import accountsRouter from './routes/accounts.js';
 import { swaggerSpec } from './swagger.js';
 import swaggerUi from 'swagger-ui-express';
@@ -39,7 +40,10 @@ app.use('/docs', swaggerUi.serve, (req, res) => {
 });
 
 // Protected API routes
-app.use('/accounts', accountsRouter);
+app.use('api/accounts', apiAccountsRouter);
+
+// Protected API routes
+app.use('accounts', accountsRouter);
 
 // Start server
 app.listen(PORT, () => {

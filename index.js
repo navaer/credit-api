@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 // Swagger docs with dynamic server URL injection
 app.use('/docs', swaggerUi.serve, (req, res) => {
   swaggerSpec.servers = [
-    { url: `${req.protocol}://${req.get('host')}` },
+    { url: `${req.protocol}://${req.get('host')}/api` },
   ];
   swaggerUi.setup(swaggerSpec)(req, res);
 });
